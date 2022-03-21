@@ -1,8 +1,11 @@
-﻿namespace VL_VendasLanches
+﻿using Microsoft.EntityFrameworkCore;
+using VL_VendasLanches.Context;
+
+namespace VL_VendasLanches
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; set; }
+        public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
         {
@@ -11,9 +14,11 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 28))));
+
             services.AddControllersWithViews();
         }
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
         {
