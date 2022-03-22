@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VL_VendasLanches.Context;
+using VL_VendasLanches.Repositories;
+using VL_VendasLanches.Repositories.Interfaces;
 
 namespace VL_VendasLanches
 {
@@ -16,6 +18,9 @@ namespace VL_VendasLanches
         {
             services.AddDbContext<AppDbContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 28))));
+
+            services.AddTransient<ILancheRepository, LancheRepository>();
+            services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
             services.AddControllersWithViews();
         }
