@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VL_VendasLanches.Repositories.Interfaces;
+using VL_VendasLanches.ViewModels;
 
 namespace VL_VendasLanches.Controllers
 {
@@ -14,8 +15,6 @@ namespace VL_VendasLanches.Controllers
 
         public IActionResult List()
         {
-            var lanches = _lancheRepository.Lanches;
-
             #region
             //ViewData["Titulo"] = "Todos os lanches";    //atribuindo valor na ViewData para ser recuperado na view List 
             //ViewData["Data"] = DateTime.Now;
@@ -23,7 +22,10 @@ namespace VL_VendasLanches.Controllers
             //ViewBag.TotalLanchesCount = lanches.Count();
             #endregion
 
-            return View(lanches); //enviando para view um IEnumerable de lanches
+            var lancheListViewModel = new LancheListViewModel();
+            lancheListViewModel.Lanches = _lancheRepository.Lanches;
+            lancheListViewModel.CategoriaAtual = "Categoria";
+            return View(lancheListViewModel); //enviando para view um IEnumerable de lanches
         }
     }
 }

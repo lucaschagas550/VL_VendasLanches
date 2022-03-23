@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VL_VendasLanches.Models.Lanche> //View fortemente tipada que é de lanche, usado para criar a view
+﻿@model LancheListViewModel //View fortemente tipada que é de lanche, usado para criar a view
 
 @*@{
     Layout = null; // Remove o layout padrão que é compartilhado, assim é possivel fazer layout personalizado somente para essa view
@@ -7,7 +7,7 @@
 <div>
 
     <br />
-    <h2>Todos os Lanches</h2>
+    <h2>@Model.CategoriaAtual</h2>
     <br />
 
     @*    <br />
@@ -23,7 +23,7 @@
 
 @*3 objetos para 3 coluna, g-4 define a margem*@
 <div class="row row-cols-3 row-cols-md-3 g-4">
-    @foreach (var lanche in Model)
+    @foreach (var lanche in Model.Lanches)
     {
         <div class="col">
             <div class="card">
