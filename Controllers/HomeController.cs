@@ -8,6 +8,11 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
+        #region
+        //TempData["Nome"] = "Lucas"; 
+        // TempData é um valor temporario que existe até ser recuperado, pode ser enviado para outra controller ou action, view para controller ou inverso
+        #endregion
+
         return View();
     }
 

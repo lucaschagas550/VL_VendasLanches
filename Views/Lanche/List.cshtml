@@ -1,10 +1,25 @@
 ﻿@model IEnumerable<VL_VendasLanches.Models.Lanche> //View fortemente tipada que é de lanche, usado para criar a view
 
+@*@{
+    Layout = null; // Remove o layout padrão que é compartilhado, assim é possivel fazer layout personalizado somente para essa view
+    }*@
+
 <div>
+
     <br />
-    <h2>Todos os lanches</h2>
+    <h2>Todos os Lanches</h2>
     <br />
+
+    @*    <br />
+        <h2>@ViewData["Titulo"]</h2>
+        <br />
+        <h2>@ViewData["Data"]</h2>
+        <hr />
+        <h6>@ViewBag.TotalLanches @ViewBag.TotalLanchescount</h6>
+        <hr />*@
 </div>
+
+@*<p>@TempData["Nome"]</p>*@
 
 @*3 objetos para 3 coluna, g-4 define a margem*@
 <div class="row row-cols-3 row-cols-md-3 g-4">
