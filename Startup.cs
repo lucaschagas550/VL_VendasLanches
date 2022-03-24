@@ -22,7 +22,14 @@ namespace VL_VendasLanches
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
 
+            //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddControllersWithViews();
+
+            //Habilitando a utilização do session para armazenar dados temporarios
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
@@ -39,6 +46,9 @@ namespace VL_VendasLanches
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            // ativando a utilização do Session
+            app.UseSession(); 
 
             app.UseRouting();
 
