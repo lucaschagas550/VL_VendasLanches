@@ -25,16 +25,7 @@
 <div class="row row-cols-3 row-cols-md-3 g-4">
     @foreach (var lanche in Model.Lanches)
     {
-        <div class="col">
-            <div class="card">
-                <img src="@lanche.ImagemUrl" class="img-thumbnail" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@lanche.Nome</h5>
-                    <p class="card-text">@lanche.DescricaoCurta</p>
-                    <p class="card-text">@lanche.Preco.ToString("c")</p>
-                </div>
-            </div>
-        </div>
+        <partial name = "_LanchesResumo" for="@lanche"/> //passa o lanche do for para a model da partial view
     }
 </div>
 
