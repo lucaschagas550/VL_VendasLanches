@@ -1,4 +1,5 @@
-﻿using VL_VendasLanches.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using VL_VendasLanches.Context;
 
 namespace VL_VendasLanches.Models
 {
@@ -58,6 +59,50 @@ namespace VL_VendasLanches.Models
             }
 
             _context.SaveChanges();
+        }
+
+        public void RemoverDoCarrinho(Lanche lanche)
+        {
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(s => s.Lanche.LancheId.Equals(lanche.LancheId)
+                                                                                        && s.CarrinhoCompraId.Equals(CarrinhoCompraId));
+
+            if (carrinhoCompraItem != null)
+            {
+                if (carrinhoCompraItem.Quantidade > 1)
+                {
+                    carrinhoCompraItem.Quantidade--;
+                }
+                else
+                {
+                    _context.CarrinhoCompraItens.Remove(carrinhoCompraItem);
+                }
+            }
+
+            _context.SaveChanges();
+        }
+
+        public List<CarrinhoCompraItem> GetCarrinhoCompraItens()
+        {
+            return CarrinhoCompraItens ?? (CarrinhoCompraItens =_context.CarrinhoCompraItens
+                                            .Where(c => c.CarrinhoCompraId.Equals(CarrinhoCompraId))
+                                            .Include(s => s.Lanche)
+                                            .ToList());
+        }
+
+        public void LimparCarrinho()
+        {
+            var carrinhoItens = _context.CarrinhoCompraItens
+                                    .Where(carrinho => carrinho.CarrinhoCompraId.Equals(CarrinhoCompraId));
+
+            _context.CarrinhoCompraItens.RemoveRange(carrinhoItens);
+            _context.SaveChanges();
+        }
+
+        public decimal GetCarrinhoCompraTotal()
+        {
+            return _context.CarrinhoCompraItens
+                        .Where(c => c.CarrinhoCompraId.Equals(CarrinhoCompraId))
+                        .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
         }
     }
 }
