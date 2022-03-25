@@ -1,6 +1,29 @@
-﻿@{
+﻿@model HomeViewModel
+
+@{
     ViewData["Title"] = "Home page"; //Define o nome que aparece na aba
 }
-<h1 class="display-4">Welcome Lucas</h1>
 
-<partial name="_Carousel" /> @*Chama uma partial view que pode ser usada em outras telas*@
+<div class="text-start p-5">
+    <h1 class="display-4">Welcome Lucas</h1>
+</div>
+
+<div class="p-5">
+    <partial name="_Carousel" /> @*Chama uma partial view que pode ser usada em outras telas*@
+</div>
+
+
+<div class="text-start p-5">
+    <h2>
+        <i class="fa-regular fa-star"></i>
+        Os lanches preferidos da semana
+        <i class="fa-regular fa-star"></i>
+<i class="bi bi-123"></i>    </h2>
+</div>
+
+<div class="row row-cols-3 row-cols-md-3 g-4 p-5">
+    @foreach (var lanche in Model.LanchesPreferidos)
+    {
+        <partial name="_LanchesResumo" for="@lanche" />
+    }
+</div>
