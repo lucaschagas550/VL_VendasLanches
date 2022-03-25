@@ -12,12 +12,12 @@ namespace VL_VendasLanches.Models
         }
 
         public string CarrinhoCompraId { get; set; }
-        public List<CarrinhoCompraItem> CarrinhoCompraItens { get; set;}
+        public List<CarrinhoCompraItem> CarrinhoCompraItens { get; set; }
 
         public static CarrinhoCompra GetCarrinho(IServiceProvider services)
         {
             //Define uma sessao
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session; 
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
 
             //obtem um servico do tipo do nosso contexto
             var context = services.GetService<AppDbContext>();
@@ -33,6 +33,31 @@ namespace VL_VendasLanches.Models
             {
                 CarrinhoCompraId = carrinhoId,
             };
+        }
+
+        public void AdicionarCarrinho(Lanche lanche)
+        {
+            var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(
+                                        s => s.Lanche.LancheId.Equals(lanche.LancheId)
+                                        && s.CarrinhoCompraId.Equals(CarrinhoCompraId));
+
+            if (carrinhoCompraItem == null)
+            {
+                carrinhoCompraItem = new CarrinhoCompraItem
+                {
+                    CarrinhoCompraId = CarrinhoCompraId,
+                    Lanche = lanche,
+                    Quantidade = 1
+                };
+
+                _context.CarrinhoCompraItens.Add(carrinhoCompraItem);
+            }
+            else
+            {
+                carrinhoCompraItem.Quantidade++;
+            }
+
+            _context.SaveChanges();
         }
     }
 }
