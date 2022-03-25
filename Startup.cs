@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VL_VendasLanches.Context;
+using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories;
 using VL_VendasLanches.Repositories.Interfaces;
 
@@ -24,6 +25,7 @@ namespace VL_VendasLanches
 
             //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
 
