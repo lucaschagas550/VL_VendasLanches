@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Curso\\VL_VendasLanches\\VL_VendasLanches.csproj": {}
+    "D:\\Projetos\\Asp net core mvc - CrIando um site\\VendasLanches\\VL_VendasLanches\\VL_VendasLanches.csproj": {}
   },
   "projects": {
-    "D:\\Curso\\VL_VendasLanches\\VL_VendasLanches.csproj": {
+    "D:\\Projetos\\Asp net core mvc - CrIando um site\\VendasLanches\\VL_VendasLanches\\VL_VendasLanches.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Curso\\VL_VendasLanches\\VL_VendasLanches.csproj",
+        "projectUniqueName": "D:\\Projetos\\Asp net core mvc - CrIando um site\\VendasLanches\\VL_VendasLanches\\VL_VendasLanches.csproj",
         "projectName": "VL_VendasLanches",
-        "projectPath": "D:\\Curso\\VL_VendasLanches\\VL_VendasLanches.csproj",
-        "packagesPath": "C:\\Users\\Lucas Chagas\\.nuget\\packages\\",
-        "outputPath": "D:\\Curso\\VL_VendasLanches\\obj\\",
+        "projectPath": "D:\\Projetos\\Asp net core mvc - CrIando um site\\VendasLanches\\VL_VendasLanches\\VL_VendasLanches.csproj",
+        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+        "outputPath": "D:\\Projetos\\Asp net core mvc - CrIando um site\\VendasLanches\\VL_VendasLanches\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Lucas Chagas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

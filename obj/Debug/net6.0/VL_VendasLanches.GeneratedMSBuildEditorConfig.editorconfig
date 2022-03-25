@@ -8,49 +8,49 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = VL_VendasLanches
 build_property.RootNamespace = VL_VendasLanches
-build_property.ProjectDir = D:\Curso\VL_VendasLanches\
+build_property.ProjectDir = D:\Projetos\Asp net core mvc - CrIando um site\VendasLanches\VL_VendasLanches\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Curso\VL_VendasLanches
+build_property.MSBuildProjectDirectory = D:\Projetos\Asp net core mvc - CrIando um site\VendasLanches\VL_VendasLanches
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Curso/VL_VendasLanches/Views/CarrinhoCompra/Index.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/CarrinhoCompra/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FycmluaG9Db21wcmFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Home/Index.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Lanche/List.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Lanche/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuY2hlXExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Shared/Error.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Shared/_Carousel.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Shared/_Carousel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DYXJvdXNlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Shared/_LanchesResumo.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Shared/_LanchesResumo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYW5jaGVzUmVzdW1vLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/_ViewImports.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/_ViewStart.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Curso/VL_VendasLanches/Views/Shared/_Layout.cshtml]
+[D:/Projetos/Asp net core mvc - CrIando um site/VendasLanches/VL_VendasLanches/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-79da82bufe
