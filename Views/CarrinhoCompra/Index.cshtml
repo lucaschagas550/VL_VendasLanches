@@ -1,0 +1,58 @@
+﻿@model CarrinhoCompraViewModel //ViewImports tem um using para o import, assim a importação fica disponivel para aplicação toda
+
+@*p-4 eh o padding*@
+<div class="container p-5">
+    <div class="row">
+        <div>
+            <h4> Seu carrinho de compras <i class="fa-solid fa-cart-shopping"></i></h4>
+        </div>
+
+        <table class="table table-bordered table-striped m-4">
+            <thead>
+                <tr>
+                    <th>Quantidade</th>
+                    <th>Lanche</th>
+                    <th class="text-right">Preço</th>
+                    <th class="text-right">SubTotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+                {
+                    <tr>
+                        <td class="text-center">@item.Quantidade</td>
+                        <td class="text-end">@item.Lanche.Nome</td>
+                        <td class="text-start">@item.Lanche.Preco.ToString("c")</td>
+                        <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
+                        <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
+                        <td class="text-center">
+                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-end">Total:</td>
+                    <td class="text-start">@Model.CarrinhoCompraTotal.ToString("c")</td>
+                </tr>
+            </tfoot>
+
+
+        </table>
+
+        @*m-4 eh a margin*@
+        <div class="text-end m-4">
+            <div class="btn-group">
+                <a class="btn btn-primary" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+                &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+            </div>
+        </div>
+    </div>
+</div>
