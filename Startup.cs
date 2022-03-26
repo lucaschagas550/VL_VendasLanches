@@ -50,7 +50,7 @@ namespace VL_VendasLanches
             app.UseStaticFiles();
 
             // ativando a utilização do Session
-            app.UseSession(); 
+            app.UseSession();
 
             app.UseRouting();
 
@@ -58,6 +58,17 @@ namespace VL_VendasLanches
 
             app.UseEndpoints(endpoints =>
              {
+                 //A ordenação importa, pq uma rota pode ser atendida pela outra dependendo dos parametros
+                 endpoints.MapControllerRoute(
+                    name: "admin", //constante admin/action
+                    pattern: "admin/{action=Index}/{id?}",
+                    defaults: new { controller = "admin" });
+
+                 endpoints.MapControllerRoute(
+                    name: "categoriaFiltro",
+                    pattern: "Lanche/{action}/{categoria?}", //Variavel a action Lanche/{action}
+                    defaults: new { controller = "Lanche", Action = "List" });
+
                  endpoints.MapControllerRoute(
                          name: "default",
                          pattern: "{controller=Home}/{action=Index}/{id?}");
