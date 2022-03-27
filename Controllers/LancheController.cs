@@ -75,6 +75,7 @@ namespace VL_VendasLanches.Controllers
                     categoriaAtual = "Nenhum lanche foi encontrado";
             }
 
+            //~ significa raiz, e escolhendo a view que sera passada
             return View("~/Views/Lanche/List.cshtml", new LancheListViewModel
             {
                 Lanches = lanches,
