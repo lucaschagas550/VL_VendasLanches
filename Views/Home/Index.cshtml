@@ -4,16 +4,16 @@
     ViewData["Title"] = "Home page"; //Define o nome que aparece na aba
 }
 
-<div class="text-start p-5">
+<div class="text-start p-2">
     <h1 class="display-4">Welcome Lucas</h1>
 </div>
 
-<div class="p-5">
+<div class="p-2">
     <partial name="_Carousel" /> @*Chama uma partial view que pode ser usada em outras telas*@
 </div>
 
 
-<div class="text-start p-5">
+<div class="text-start p-3">
     <h2>
         <i class="fa-regular fa-star"></i>
         Os lanches preferidos da semana
@@ -21,7 +21,7 @@
     </h2>
 </div>
 
-<div class="row row-cols-3 row-cols-md-3 g-4 p-5">
+<div class="row row-cols-3 row-cols-md-3 g-4 p-2">
     @foreach (var lanche in Model.LanchesPreferidos)
     {
         <partial name="_LanchesResumo" for="@lanche" />

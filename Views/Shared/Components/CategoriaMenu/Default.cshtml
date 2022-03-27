@@ -1,0 +1,25 @@
+﻿<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+    <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Lanches
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                @foreach (var categoria in Model)
+                {
+                    <li>
+                        <a class="dropdown-item" asp-controller="Lanche" asp-action="List" asp-route-categoria="@categoria.CategoriaNome" style="color:white">
+                            @categoria.CategoriaNome
+                        </a>
+                    </li>
+                }
+                <li class="dropdown-divider"></li>
+                <li>
+                    <a class="dropdown-item" asp-controller="Lanche" asp-action="List" asp-route-categoria="" style="color:white">
+                        Todos os Lanches
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

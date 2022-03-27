@@ -12,17 +12,17 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-lg">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+            <div class="container-md">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">VendasLanche</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"> 
                     <h4>@await Component.InvokeAsync("CarrinhoCompraResumo")</h4>
+                    <span>@await Component.InvokeAsync("CategoriaMenu")</span>
                     <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <a class="nav-link text-white" asp-area="" asp-controller="Lanche" asp-action="List">Lanches</a>
                     <a class="nav-link text-white" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
                 </div>
             </div>
