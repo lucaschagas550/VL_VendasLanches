@@ -29,7 +29,9 @@
                         <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
                         <td class="text-center">
                             <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId">
-                                <i class="fa-solid fa-trash"></i>
+                                <p class="style=color:red">
+                                    <i class="fa-solid fa-trash fa-1x " style="color:#d9534f"></i>
+                                </p>
                             </a>
                         </td>
                     </tr>
@@ -48,8 +50,8 @@
 
         @*m-4 eh a margin*@
         <div class="text-end m-4">
-                <a class="btn btn-primary m-3" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
-                <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+            <a class="btn btn-primary m-3" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
         </div>
     </div>
 </div>

@@ -47,5 +47,11 @@ namespace VL_VendasLanches.Controllers
 
             return View(lanchesViewModel); //enviando para view um IEnumerable de lanches
         }
+
+        public IActionResult Details(int lancheId)
+        {
+            var lanche = _lancheRepository.Lanches.FirstOrDefault(l => l.LancheId.Equals(lancheId));
+            return View(lanche);
+        }
     }
 }
