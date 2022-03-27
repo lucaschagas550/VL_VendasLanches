@@ -22,6 +22,7 @@ namespace VL_VendasLanches
 
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
 
             //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
