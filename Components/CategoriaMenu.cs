@@ -10,7 +10,7 @@ namespace VL_VendasLanches.Components
 
         public CategoriaMenu(ICategoriaRepository categoriaRepository)
         {
-            _categoriaRepository=categoriaRepository;
+            _categoriaRepository = categoriaRepository;
         }
 
         public IViewComponentResult Invoke()

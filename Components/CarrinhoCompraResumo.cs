@@ -11,7 +11,7 @@ namespace VL_VendasLanches.Components
 
         public CarrinhoCompraResumo(CarrinhoCompra carrinhoCompra)
         {
-            _carrinhoCompra=carrinhoCompra;
+            _carrinhoCompra = carrinhoCompra;
         }
 
         public IViewComponentResult Invoke()
