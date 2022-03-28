@@ -4,7 +4,7 @@ using VL_VendasLanches.ViewModels;
 
 namespace VL_VendasLanches.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : MainController
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
