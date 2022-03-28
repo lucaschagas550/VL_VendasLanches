@@ -33,7 +33,7 @@ namespace VL_VendasLanches.Controllers
             }else
             {
                 lanches = _lancheRepository.Lanches
-                            .Where(l => l.Categoria.CategoriaNome.Equals(categoria))
+                            .Where(l => l.Categoria.CategoriaNome.ToLower().Equals(categoria.ToLower()))
                             .OrderBy(c => c.Nome);
 
                 categoriaAtual = categoria;
