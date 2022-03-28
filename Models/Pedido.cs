@@ -27,7 +27,7 @@ namespace VL_VendasLanches.Models
 
         [Required(ErrorMessage = "Informe o seu CEP")]
         [Display(Name = "CEP")]
-        [StringLength(10, MinimumLength = 8)]
+        [StringLength(10, MinimumLength = 8, ErrorMessage = "O {0} deve ter no máximo {1} caracteres e no mínimo {2}")]
         public string Cep { get; set; }
 
         [StringLength(10)]

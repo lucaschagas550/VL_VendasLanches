@@ -24,7 +24,7 @@ namespace VL_VendasLanches.Controllers
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
-            return View();
+            return View("~/Views/Pedido/Checkout.cshtml");
         }
     }
 }

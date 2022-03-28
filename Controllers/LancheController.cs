@@ -54,6 +54,7 @@ namespace VL_VendasLanches.Controllers
             return View(lanche);
         }
 
+        //viewResult retorna espeficiamente uma view
         public ViewResult Search(string searchString)
         {
             IEnumerable<Lanche> lanches;

@@ -50,8 +50,10 @@
 
         @*m-4 eh a margin*@
         <div class="text-end m-4">
-            <a class="btn btn-primary m-3" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
-            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+            <form method="post" asp-controller="Pedido" asp-action="Checkout">
+                <a class="btn btn-primary m-2" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+                <button type="submit" class="btn btn-success" >Encerrar Pedido</button>
+            </form>
         </div>
     </div>
 </div>
