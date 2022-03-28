@@ -1,0 +1,47 @@
+﻿@model Pedido
+
+<br />
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">@ViewBag.CheckoutCompletoMensagem</h4>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <p>Cliente : <strong>@Model.Nome</strong>
+            <p>Data do Pedido :  <strong>@Model.PedidoEnviado</strong>
+            <p>Número do Pedido   : <strong>@Model.PedidoId</strong></p>
+           
+            <div class="table-responsive-lg"> @*tabela responsiva*@
+                <table class="table table-bordered table-striped m-4">
+                    <thead>
+                        <tr>
+                            <th class="text-center"></th>
+                            <th class="text-center">Quantidade</th>
+                            <th class="text-center">Lanche</th>
+                            <th class="text-center">Preço</th>
+                        </tr>
+                    </thead>
+                            @foreach (var item in Model.PedidoItens)
+                            {
+                        <tr>
+                            <td class="text-center"><img src="@item.Lanche.ImagemUrl" width="40" height="40" /></td>
+                            <td class="text-center">@item.Quantidade</td>
+                            <td class="text-center">@item.Lanche.Nome</td>
+                            <td class="text-center">@item.Lanche.Preco</td>
+                        </tr>
+                            }
+                </table>
+            </div>
+            <br />
+            <h4 class="p-2">Valor Total do Pedido: <strong>@(((decimal)ViewBag.TotalPedido).ToString("C2"))</strong></h4>
+        </div>
+    </div>
+</div>
+<div class="form-group p-2" style="text-align :center">
+    <h3>
+         <a class="btn btn-primary btn-lg m-2" asp-controller="Home" asp-action="Index">Retornar</a>
+    </h3>
+</div>

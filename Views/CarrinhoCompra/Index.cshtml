@@ -7,52 +7,55 @@
             <h4> Seu carrinho de compras <i class="fa-solid fa-cart-shopping fa-2x"></i></h4>
         </div>
 
-        <table class="table table-bordered table-striped m-4">
-            <thead>
-                <tr>
-                    <th>Quantidade</th>
-                    <th>Lanche</th>
-                    <th class="text-right">Preço</th>
-                    <th class="text-right">SubTotal</th>
-                    <th></th>
-                </tr>
-            </thead>
+        <div class="table-responsive-lg">
 
-            <tbody>
-                @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
-                {
+            <table class="table table-bordered table-striped m-4"> @*tabela responsiva*@
+                <thead>
                     <tr>
-                        <td class="text-center">@item.Quantidade</td>
-                        <td class="text-end">@item.Lanche.Nome</td>
-                        <td class="text-start">@item.Lanche.Preco.ToString("c")</td>
-                        <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
-                        <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
-                        <td class="text-center">
-                            <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId">
-                                <p class="style=color:red">
-                                    <i class="fa-solid fa-trash fa-1x " style="color:#d9534f"></i>
-                                </p>
-                            </a>
-                        </td>
+                        <th>Quantidade</th>
+                        <th>Lanche</th>
+                        <th class="text-right">Preço</th>
+                        <th class="text-right">SubTotal</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
+                </thead>
 
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-end">Total:</td>
-                    <td class="text-start">@Model.CarrinhoCompraTotal.ToString("c")</td>
-                </tr>
-            </tfoot>
+                <tbody>
+                    @foreach (var item in Model.CarrinhoCompra.CarrinhoCompraItens)
+                    {
+                        <tr>
+                            <td class="text-center">@item.Quantidade</td>
+                            <td class="text-end">@item.Lanche.Nome</td>
+                            <td class="text-start">@item.Lanche.Preco.ToString("c")</td>
+                            <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
+                            <td class="text-start">@((item.Quantidade * item.Lanche.Preco).ToString("c"))</td>
+                            <td class="text-center">
+                                <a asp-controller="CarrinhoCompra" asp-action="RemoverItemDoCarrinhoCompra" asp-route-lancheId="@item.Lanche.LancheId">
+                                    <p class="style=color:red">
+                                        <i class="fa-solid fa-trash fa-1x " style="color:#d9534f"></i>
+                                    </p>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end">Total:</td>
+                        <td class="text-start">@Model.CarrinhoCompraTotal.ToString("c")</td>
+                    </tr>
+                </tfoot>
 
 
-        </table>
+            </table>
+        </div>
 
         @*m-4 eh a margin*@
-        <div class="text-end m-4">
+        <div class="text-end m-1">
             <form method="post" asp-controller="Pedido" asp-action="Checkout">
-                <a class="btn btn-primary m-2" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
-                <button type="submit" class="btn btn-success" >Encerrar Pedido</button>
+                <a class="btn btn-primary m-1" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+                <button type="submit" class="btn btn-success">Encerrar Pedido</button>
             </form>
         </div>
     </div>

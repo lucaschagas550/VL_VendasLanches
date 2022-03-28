@@ -9,7 +9,7 @@
             </a>
             <p class="card-text">@Model.DescricaoCurta</p>
             <p class="card-text">@Model.Preco.ToString("c")</p>
-            <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra"
+            <a class="btn btn-primary btn-sm" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra"
                asp-route-LancheId="@Model.LancheId">Adicionar ao Carrinho</a>
         </div>
     </div>

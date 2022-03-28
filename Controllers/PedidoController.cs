@@ -24,6 +24,9 @@ namespace VL_VendasLanches.Controllers
         [HttpPost]
         public IActionResult Checkout(Pedido pedido)
         {
+            //verifica se existe algum erro na model, se tiver retorna
+            if (!ModelState.IsValid) return View(pedido);
+
             int totalItensPedido = 0;
             decimal precoTotalPedido = 0.0m;
 
@@ -49,22 +52,19 @@ namespace VL_VendasLanches.Controllers
             pedido.PedidoTotal = precoTotalPedido;
 
             //valida os dados do pedido
-            if (ModelState.IsValid)
-            {
-                //cria o pedido e os detalhes
-                _pedidoRepository.CriarPedido(pedido);
 
-                //define mensagens ao cliente
-                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :)";
-                ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
+            //cria o pedido e os detalhes
+            _pedidoRepository.CriarPedido(pedido);
 
-                //limpa o carrinho do cliente
-                _carrinhoCompra.LimparCarrinho();
+            //define mensagens ao cliente
+            ViewBag.CheckoutCompletoMensagem = "Obrigado pelo seu pedido :)";
+            ViewBag.TotalPedido = _carrinhoCompra.GetCarrinhoCompraTotal();
 
-                //exibe a view com dados do cliente e do pedido
-                return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
-            }
-            return View(pedido);
+            //limpa o carrinho do cliente
+            _carrinhoCompra.LimparCarrinho();
+
+            //exibe a view com dados do cliente e do pedido
+            return View("~/Views/Pedido/CheckoutCompleto.cshtml", pedido);
         }
     }
 }
