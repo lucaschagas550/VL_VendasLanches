@@ -9,7 +9,8 @@
 
         <div class="table-responsive-lg">
 
-            <table class="table table-bordered table-striped m-4"> @*tabela responsiva*@
+            <table class="table table-bordered table-striped m-4">
+                @*tabela responsiva*@
                 <thead>
                     <tr>
                         <th>Quantidade</th>
@@ -53,10 +54,10 @@
 
         @*m-4 eh a margin*@
         <div class="text-end m-1">
-            <form method="post" asp-controller="Pedido" asp-action="Checkout">
-                <a class="btn btn-primary m-1" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
-                <button type="submit" class="btn btn-success">Encerrar Pedido</button>
-            </form>
+            @*            <form method="post" asp-controller="Pedido" asp-action="Checkout">*@
+            <a class="btn btn-primary m-1" asp-controller="Lanche" asp-action="List">Continuar Comprando</a>
+            <a class="btn btn-success" asp-controller="Pedido" asp-action="Checkout">Encerrar Pedido</a>
+            @*            </form>*@
         </div>
     </div>
 </div>
