@@ -77,5 +77,17 @@ namespace VL_VendasLanches.Controllers
             }
             return View(registroVM);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            //Zerando o usuario e removendo todos os objetos da sessao
+            HttpContext.Session.Clear();
+            HttpContext.User = null;
+
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
