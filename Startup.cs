@@ -78,7 +78,7 @@ namespace VL_VendasLanches
 
                  endpoints.MapControllerRoute(
                     name: "Login",
-                    pattern: "Account/{action}", //Variavel a action Lanche/{action}
+                    pattern: "Account/{action}", //Variavel a action/{action}
                     defaults: new { controller = "Account", Action = "Login" });
 
                  endpoints.MapControllerRoute(
