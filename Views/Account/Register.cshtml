@@ -1,7 +1,7 @@
 ﻿@model LoginViewModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Register";
 }
 
 <section class="section-conten padding-y container" style="min-height:45vh">
@@ -10,8 +10,8 @@
         <vc:Summary></vc:Summary>
 
         <div class="card-body">
-            <h4 class="card-title mb-4">Seja bem vindo!</h4>
-            <form asp-controller="Account" asp-action="Login" method="post">
+            <h4 class="card-title mb-4">Registrar usuário</h4>
+            <form asp-controller="Account" asp-action="Register" method="post">
 @*                <div asp-validation-summary="All" class="text-danger"></div>
 *@
                 <input type="hidden" asp-for="ReturnUrl" />
@@ -30,10 +30,10 @@
                 <div class="form-group d-grid gap-2">
                     @*Botão responsivo, pega largura total da div*@
                     <br />
-                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="card-footer text-center">Ainda não tem uma conta?<a asp-controller="Account" asp-action="Register"> Criar uma conta</a></div>
+    <div class="card-footer text-center">Já possui conta?<a asp-controller="Account" asp-action="Login"> Acesse sua conta</a></div>
 </section>

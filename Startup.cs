@@ -25,6 +25,17 @@ namespace VL_VendasLanches
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    //Definições padrões do identity para password
+            //    options.Password.RequireDigit = true;
+            //    options.Password.RequireNonAlphanumeric = true;
+            //    options.Password.RequireLowercase = true;
+            //    options.Password.RequireUppercase = true;
+            //    options.Password.RequiredLength = 8; // padrao eh 6
+            //    options.Password.RequiredUniqueChars = 1; //nao pode repetir nenhum caracter
+            //});
+
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
