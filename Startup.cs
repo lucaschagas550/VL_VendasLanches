@@ -76,6 +76,10 @@ namespace VL_VendasLanches
 
             app.UseEndpoints(endpoints =>
              {
+                 endpoints.MapControllerRoute(
+                   name: "areas",
+                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                  //A ordenação importa, pq uma rota pode ser atendida pela outra dependendo dos parametros
                  endpoints.MapControllerRoute(
                     name: "admin", //constante admin/action
@@ -95,6 +99,7 @@ namespace VL_VendasLanches
                  endpoints.MapControllerRoute(
                          name: "default",
                          pattern: "{controller=Home}/{action=Index}/{id?}");
+
              });
         }
     }
