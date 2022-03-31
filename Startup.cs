@@ -42,6 +42,16 @@ namespace VL_VendasLanches
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
+            //Autorização baseada na role
+            services.AddAuthorization(options =>
+           {
+               options.AddPolicy("Admin",
+                   politica =>
+                   {
+                       politica.RequireRole("Admin");
+                   });
+           };
+
             //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
