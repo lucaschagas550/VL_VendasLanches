@@ -4,6 +4,7 @@ using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories;
 using VL_VendasLanches.Repositories.Interfaces;
+using VL_VendasLanches.Services;
 
 namespace VL_VendasLanches
 {
@@ -39,6 +40,7 @@ namespace VL_VendasLanches
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
+            services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
 
             //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -51,7 +53,8 @@ namespace VL_VendasLanches
             services.AddSession();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
+        //Injeta o serviço ISeedUserRoleInitial para ser executado ao iniciar o projeto
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment environment, ISeedUserRoleInitial seedUserRoleInitial)
         {
             if (environment.IsDevelopment())
             {
@@ -70,6 +73,11 @@ namespace VL_VendasLanches
             app.UseSession();
 
             app.UseRouting();
+
+            //Cria as roles
+            seedUserRoleInitial.SeedRoles();
+            //Cria os usuarios e atribui as roles
+            seedUserRoleInitial.SeedUsers();
 
             app.UseAuthentication();
             app.UseAuthorization();
