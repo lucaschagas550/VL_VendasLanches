@@ -78,13 +78,13 @@ namespace VL_VendasLanches
              {
                  endpoints.MapControllerRoute(
                    name: "areas",
-                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                   pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
 
                  //A ordenação importa, pq uma rota pode ser atendida pela outra dependendo dos parametros
-                 endpoints.MapControllerRoute(
-                    name: "admin", //constante admin/action
-                    pattern: "admin/{action=Index}/{id?}",
-                    defaults: new { controller = "admin" });
+                 //endpoints.MapControllerRoute(
+                 //   name: "admin", //constante admin/action
+                 //   pattern: "admin/{action=Index}/{id?}",
+                 //   defaults: new { controller = "admin" });
 
                  endpoints.MapControllerRoute(
                     name: "categoriaFiltro",
