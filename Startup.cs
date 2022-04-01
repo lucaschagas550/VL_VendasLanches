@@ -50,7 +50,7 @@ namespace VL_VendasLanches
                    {
                        politica.RequireRole("Admin");
                    });
-           };
+           });
 
             //A instancia vale para aplicação toda e é possivel recuperar valores do httpContextAcesso e obter informações do request ou response da requisição atual
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
