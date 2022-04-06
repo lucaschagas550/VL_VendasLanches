@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 
@@ -23,9 +24,25 @@ namespace VL_VendasLanches.Areas.Admin.Controllers
         }
 
         // GET: Admin/AdminPedidos
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Pedidos.ToListAsync());
+        //}
+
+        //Consulta com paginação utilizando ReflectionIT.Mvc.Paging;
+        public async Task<IActionResult> Index(string filter, int pageindex = 0, string sort = "Nome")
         {
-            return View(await _context.Pedidos.ToListAsync());
+            var resultado = _context.Pedidos.AsNoTracking().AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(filter))
+            {
+                resultado = resultado.Where(p => p.Nome.Contains(filter));
+            }
+
+            var model = await PagingList.CreateAsync(resultado, 3, pageindex, sort, "Nome");
+            model.RouteValue = new RouteValueDictionary { { "filter", filter } }; //padrao do componente, utilizar na view
+
+            return View(model);
         }
 
         // GET: Admin/AdminPedidos/Details/5

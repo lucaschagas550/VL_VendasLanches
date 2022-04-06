@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories;
@@ -57,6 +58,11 @@ namespace VL_VendasLanches
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
 
             services.AddControllersWithViews();
+
+            services.AddPaging(options => {
+                options.ViewName = "Bootstrap4";
+                options.PageParameterName = "pageindex";
+            });
 
             //Habilitando a utilização do session para armazenar dados temporarios
             services.AddMemoryCache();
