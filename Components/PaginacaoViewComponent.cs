@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VL_VendasLanches.Models;
+using VL_VendasLanches.ViewModels;
 
 namespace VL_VendasLanches.Components
 {

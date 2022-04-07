@@ -1,4 +1,5 @@
-﻿using VL_VendasLanches.Models;
+﻿using VL_VendasLanches.ViewModels;
+using VL_VendasLanches.Models;
 
 namespace VL_VendasLanches.Repositories.Interfaces
 {

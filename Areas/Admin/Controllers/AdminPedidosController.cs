@@ -5,6 +5,7 @@ using ReflectionIT.Mvc.Paging;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories.Interfaces;
+using VL_VendasLanches.ViewModels;
 
 namespace VL_VendasLanches.Areas.Admin.Controllers
 {
@@ -21,6 +22,26 @@ namespace VL_VendasLanches.Areas.Admin.Controllers
             _pedidoRepository = pedidoRepository;
         }
 
+        public IActionResult PedidoLanches(int? id)
+        {
+            var pedido = _context.Pedidos
+                         .Include(pd => pd.PedidoItens)
+                         .ThenInclude(l => l.Lanche)
+                         .FirstOrDefault(p => p.PedidoId == id);
+
+            if (pedido == null)
+            {
+                Response.StatusCode = 404;
+                return View("PedidoNotFound", id.Value);
+            }
+
+            PedidoLancheViewModel pedidoLanches = new PedidoLancheViewModel()
+            {
+                Pedido = pedido,
+                PedidoDetalhes = pedido.PedidoItens
+            };
+            return View(pedidoLanches);
+        }
 
         //Consulta com paginação utilizando ReflectionIT.Mvc.Paging;
         public async Task<IActionResult> Index([FromQuery] int ps = 3, [FromQuery] int page = 1, [FromQuery] string q = null)

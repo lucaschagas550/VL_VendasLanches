@@ -1,4 +1,4 @@
-﻿namespace VL_VendasLanches.Models
+﻿namespace VL_VendasLanches.ViewModels
 {
     public class PagedViewModel<T> : IPagedList where T : class
     {

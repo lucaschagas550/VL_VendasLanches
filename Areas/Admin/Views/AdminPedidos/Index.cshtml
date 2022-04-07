@@ -1,4 +1,4 @@
-﻿@model VL_VendasLanches.Models.PagedViewModel<Pedido>
+﻿@model VL_VendasLanches.ViewModels.PagedViewModel<Pedido>
 
 @{
     ViewData["Title"] = "Index";
@@ -125,6 +125,7 @@ Total de Pedidos : @Model.TotalResults
                     <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                    <a asp-action="PedidoLanches" asp-route-id="@item.PedidoId">Ver Itens</a>
                 </td>
             </tr>
         }

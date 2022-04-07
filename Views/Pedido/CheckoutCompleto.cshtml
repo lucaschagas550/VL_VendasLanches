@@ -3,7 +3,7 @@
 <br />
 
 <div class="alert alert-success" role="alert">
-  <h4 class="alert-heading">@ViewBag.CheckoutCompletoMensagem</h4>
+    <h4 class="alert-heading">@ViewBag.CheckoutCompletoMensagem</h4>
 </div>
 
 <div class="container">
@@ -13,8 +13,9 @@
             <p>Cliente : <strong>@Model.Nome</strong>
             <p>Data do Pedido :  <strong>@Model.PedidoEnviado</strong>
             <p>Número do Pedido   : <strong>@Model.PedidoId</strong></p>
-           
-            <div class="table-responsive-lg"> @*tabela responsiva*@
+
+            <div class="table-responsive">
+                        @*tabela responsiva*@
                 <table class="table table-bordered table-striped m-4">
                     <thead>
                         <tr>
@@ -42,6 +43,6 @@
 </div>
 <div class="form-group p-2" style="text-align :center">
     <h3>
-         <a class="btn btn-primary btn-lg m-2" asp-controller="Home" asp-action="Index">Retornar</a>
+        <a class="btn btn-primary btn-lg m-2" asp-controller="Home" asp-action="Index">Retornar</a>
     </h3>
 </div>

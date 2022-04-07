@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
+using VL_VendasLanches.ViewModels;
 using VL_VendasLanches.Repositories.Interfaces;
 
 namespace VL_VendasLanches.Repositories
