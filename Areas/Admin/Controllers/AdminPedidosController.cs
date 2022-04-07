@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
+using VL_VendasLanches.Repositories.Interfaces;
 
 namespace VL_VendasLanches.Areas.Admin.Controllers
 {
@@ -17,32 +13,42 @@ namespace VL_VendasLanches.Areas.Admin.Controllers
     public class AdminPedidosController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IPedidoRepository _pedidoRepository;
 
-        public AdminPedidosController(AppDbContext context)
+        public AdminPedidosController(AppDbContext context, IPedidoRepository pedidoRepository)
         {
             _context = context;
+            _pedidoRepository = pedidoRepository;
         }
 
-        // GET: Admin/AdminPedidos
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Pedidos.ToListAsync());
-        //}
 
         //Consulta com paginação utilizando ReflectionIT.Mvc.Paging;
-        public async Task<IActionResult> Index(string filter, int pageindex = 0, string sort = "Nome")
+        public async Task<IActionResult> Index([FromQuery] int ps = 3, [FromQuery] int page = 1, [FromQuery] string q = null)
         {
-            var resultado = _context.Pedidos.AsNoTracking().AsQueryable();
+            var pedidos = await _pedidoRepository.Get();
+            //var pedidos = _context.Pedidos.AsQueryable().AsNoTracking(); igual a linha de cima
 
-            if (!string.IsNullOrWhiteSpace(filter))
+            pedidos = pedidos.OrderBy(o => o.Nome);
+
+            if (!string.IsNullOrEmpty(q))
             {
-                resultado = resultado.Where(p => p.Nome.Contains(filter));
+                pedidos = pedidos.Where(o => o.Nome.Contains(q));
             }
+            var paginacaoPedidos = await _pedidoRepository.ObterTodos(pedidos, page, ps, q);
 
-            var model = await PagingList.CreateAsync(resultado, 3, pageindex, sort, "Nome");
-            model.RouteValue = new RouteValueDictionary { { "filter", filter } }; //padrao do componente, utilizar na view
+            #region
+            //var resultado = _context.Pedidos.AsNoTracking().AsQueryable();
 
-            return View(model);
+            //if (!string.IsNullOrWhiteSpace(filter))
+            //{
+            //    resultado = resultado.Where(p => p.Nome.Contains(filter));
+            //}
+
+            //var model = await PagingList.CreateAsync(resultado, 3, pageindex, sort, "Nome");
+            //model.RouteValue = new RouteValueDictionary { { "filter", filter } }; //padrao do componente, utilizar na view
+            #endregion
+
+            return View(paginacaoPedidos);
         }
 
         // GET: Admin/AdminPedidos/Details/5

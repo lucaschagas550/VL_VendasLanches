@@ -1,4 +1,4 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<VL_VendasLanches.Models.Pedido>
+﻿@model VL_VendasLanches.Models.PagedViewModel<Pedido>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,18 +6,29 @@
 
 <h1>Index</h1>
 
-<form method="get" class="form-inline">
-    
+@*<form method="get" class="form-inline">
+
     <input name="filter" class="form-control" placeholder="filtro"
-           value="@Model.RouteValue["Filter"]" />
+    value="@Model.RouteValue["Filter"]" />
 
     <button type="submit" class="btn btn-info">Procurar</button>
+    </form>*@
+
+<form method="get" asp-controller="AdminPedidos" asp-action="Index" class="search">
+    <div class="input-group w-100">
+        <input type="text" id="q" name="q" class="form-control" value="@ViewBag.Pesquisa" placeholder="O que você está procurando?">
+        <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </div>
 </form>
 
-Total de Pedidos : @Model.TotalRecordCount
-<div>
-   <vc:pager paging-list="@Model"></vc:pager>
-</div>
+Total de Pedidos : @Model.TotalResults
+@*<div>
+    <vc:pager paging-list="@Model"></vc:pager>
+    </div>*@
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -26,83 +37,99 @@ Total de Pedidos : @Model.TotalRecordCount
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                Nome
+                @*@Html.DisplayNameFor(model => model.List.)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sobrenome)
+                Sobrenome
+                @*@Html.DisplayNameFor(model => model.Sobrenome)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco1)
+                Endereço 1
+                @*@Html.DisplayNameFor(model => model.Endereco1)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Endereco2)
+                Endereço 2
+                @*@Html.DisplayNameFor(model => model.Endereco2)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cep)
+                Cep
+                @*@Html.DisplayNameFor(model => model.Cep)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                Estado
+                @*@Html.DisplayNameFor(model => model.Estado)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cidade)
+                Cidade
+                @*@Html.DisplayNameFor(model => model.Cidade)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone)
+                Telefone
+                @*@Html.DisplayNameFor(model => model.Telefone)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
+                @*@Html.DisplayNameFor(model => model.Email)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PedidoEnviado)
+                Pedido Enviado
+                @*@Html.DisplayNameFor(model => model.PedidoEnviado)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PedidoEntregueEm)
+                Pedido Entregue
+                @*                @Html.DisplayNameFor(model => model.PedidoEntregueEm)
+                *@
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sobrenome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cep)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cidade)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PedidoEnviado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PedidoEntregueEm)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.List)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cidade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PedidoEnviado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PedidoEntregueEm)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PedidoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PedidoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PedidoId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<vc:paginacao modelo-paginado="@Model"></vc:paginacao>
+

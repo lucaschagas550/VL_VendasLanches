@@ -1,4 +1,5 @@
-﻿using VL_VendasLanches.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories.Interfaces;
 
@@ -36,6 +37,26 @@ namespace VL_VendasLanches.Repositories
                 _appDbContext.PedidoDetalhes.Add(pedidoDetail);
             }
             _appDbContext.SaveChanges();
+        }
+
+        public async Task<IQueryable<Pedido>> Get()
+        {
+            return _appDbContext.Set<Pedido>().AsNoTracking(); //asnotracking permite desabilitar o rastreamento de entidade e assim ganhar desempenho
+            //o metodo set do contexto retonar uma instancia dbset<t> para o acesso a entidades de determinado tipo no contexto
+        }
+
+        public async Task<PagedViewModel<Pedido>> ObterTodos(IQueryable<Pedido> source, int pageNumber, int pageSize, string query)
+        {
+            var count = source.Count();
+            var itens = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            return new PagedViewModel<Pedido>()
+            {
+                List = itens,
+                PageSize = pageSize,
+                PageIndex = pageNumber,
+                TotalResults = count
+            };
         }
     }
 }
