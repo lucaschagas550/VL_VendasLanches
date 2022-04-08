@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ReflectionIT.Mvc.Paging;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories.Interfaces;

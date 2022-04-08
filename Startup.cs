@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ReflectionIT.Mvc.Paging;
+using VL_VendasLanches.Areas.Admin.Services;
 using VL_VendasLanches.Context;
 using VL_VendasLanches.Models;
 using VL_VendasLanches.Repositories;
@@ -42,6 +43,7 @@ namespace VL_VendasLanches
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+            services.AddScoped<RelatorioVendasService>();
 
             //Autorização baseada na role
             services.AddAuthorization(options =>
@@ -59,10 +61,10 @@ namespace VL_VendasLanches
 
             services.AddControllersWithViews();
 
-            services.AddPaging(options => {
-                options.ViewName = "Bootstrap4";
-                options.PageParameterName = "pageindex";
-            });
+            //services.AddPaging(options => {
+            //    options.ViewName = "Bootstrap4";
+            //    options.PageParameterName = "pageindex";
+            //});
 
             //Habilitando a utilização do session para armazenar dados temporarios
             services.AddMemoryCache();
