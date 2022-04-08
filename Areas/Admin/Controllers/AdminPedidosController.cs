@@ -46,7 +46,7 @@ namespace VL_VendasLanches.Areas.Admin.Controllers
         //Consulta com paginação utilizando ReflectionIT.Mvc.Paging;
         public async Task<IActionResult> Index([FromQuery] int ps = 3, [FromQuery] int page = 1, [FromQuery] string q = null)
         {
-            var pedidos = await _pedidoRepository.Get();
+            var pedidos = _pedidoRepository.Get();
             //var pedidos = _context.Pedidos.AsQueryable().AsNoTracking(); igual a linha de cima
 
             pedidos = pedidos.OrderBy(o => o.Nome);

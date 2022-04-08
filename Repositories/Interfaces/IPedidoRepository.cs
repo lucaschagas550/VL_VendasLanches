@@ -6,7 +6,7 @@ namespace VL_VendasLanches.Repositories.Interfaces
     public interface IPedidoRepository
     {
         void CriarPedido(Pedido pedido);
-        Task<IQueryable<Pedido>> Get();
+        IQueryable<Pedido> Get();
         Task<PagedViewModel<Pedido>> ObterTodos(IQueryable<Pedido> source, int pageNumber, int pageSize, string query);
     }
 }

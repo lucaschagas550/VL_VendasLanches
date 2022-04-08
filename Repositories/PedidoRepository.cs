@@ -40,7 +40,7 @@ namespace VL_VendasLanches.Repositories
             _appDbContext.SaveChanges();
         }
 
-        public async Task<IQueryable<Pedido>> Get()
+        public IQueryable<Pedido> Get()
         {
             return _appDbContext.Set<Pedido>().AsNoTracking(); //asnotracking permite desabilitar o rastreamento de entidade e assim ganhar desempenho
             //o metodo set do contexto retonar uma instancia dbset<t> para o acesso a entidades de determinado tipo no contexto
