@@ -28,6 +28,8 @@ namespace VL_VendasLanches
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
+
             //services.Configure<IdentityOptions>(options =>
             //{
             //    //Definições padrões do identity para password

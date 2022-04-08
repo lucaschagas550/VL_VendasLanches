@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VL_VendasLanches.Areas.Admin.Services;
 
 namespace VL_VendasLanches.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize("Admin")] // tem que estar com perfi de admin
     public class AdminRelatorioVendasController : Controller
     {
         private readonly RelatorioVendasService relatorioVendasService;
