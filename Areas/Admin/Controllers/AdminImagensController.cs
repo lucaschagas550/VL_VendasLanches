@@ -42,6 +42,7 @@ namespace VL_VendasLanches.Areas.Admin.Controllers
 
             var filePathsName = new List<string>();
 
+            //recupera caminho fisico da pasta wwwroot/imagens/produtos
             var filePath = Path.Combine(_hostingEnvironment.WebRootPath,
                 _myConfig.NomePastaImagensProdutos);
 
