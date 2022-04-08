@@ -2,7 +2,11 @@
 
 <div class="col">
     <div class="card">
-        <img src="@Model.ImagemUrl" class="img-thumbnail" alt="...">
+        <div class="text-center">
+            <a asp-controller="Lanche" asp-action="Details" asp-route-LancheId="@Model.LancheId"> 
+                <img src="@Model.ImagemUrl" class="img-fluid"alt="Lanche a venda" > 
+            </a>
+        </div>
         <div class="card-body">
             <a asp-controller="Lanche" asp-action="Details" asp-route-lancheid="@Model.LancheId">
                 <h5 class="card-title">@Model.Nome</h5>
