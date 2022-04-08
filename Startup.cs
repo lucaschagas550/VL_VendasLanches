@@ -87,7 +87,7 @@ namespace VL_VendasLanches
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); // permite que arquivos estaticos sejam servidos e acessado no wwwroot como imagens
 
             // ativando a utilização do Session
             app.UseSession();
